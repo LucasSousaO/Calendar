@@ -5,19 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" type="text/css" href="css\calendar.css">
     <title>Holidays</title>
+    <script src="https://npmcdn.com/vue/dist/vue.js"></script>
   </head>
 
   <body>
-    <div class="months">
-        <li class="table">
-            <ul id="january">January</ul><ul id="February">February</ul><ul id="March">March</ul><ul id="April">April</ul id="May"><ul>May</ul>
-        </li>
+    <div id="calendar">
+      <div class="table">
+          <ul class= "table" v-for="month in months">{{month.mes}}</ul>
+          
       </div>
-      <div id="title">Title</div>
+      <p id="title">{{ month }}</p>
+      
+      <div class="week-days">
+          <div  v-for="day in weekDay">{{weekDay.dia}}</div>
+      </div>
 
-        <div class="week-days">
-
-        </div>
+    </div>
   </body>
 
 </html>
