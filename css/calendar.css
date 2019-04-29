@@ -1,0 +1,28 @@
+.table{
+    display: flex;
+    justify-content: space-around;
+}
+.days{
+    display: flex;
+    justify-content: space-around;
+}
+.month{
+    border: solid 1px black;
+}
+
+.week{
+    border: solid 1px black;
+    height: 5em;
+}
+
+.week-days{
+    display: flex;
+    justify-content: center;
+    min-height: 5em;
+    border: solid 1px black;
+}
+#title{
+    justify-content: center;
+    display: grid;
+    font-size: 2em;
+}
