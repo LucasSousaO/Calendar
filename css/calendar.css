@@ -12,7 +12,8 @@
 
 .week{
     border: solid 1px black;
-    height: 5em;
+    height: 10em;
+    font-size: 2em;
 }
 
 .week-days{
@@ -20,6 +21,7 @@
     justify-content: center;
     min-height: 5em;
     border: solid 1px black;
+
 }
 #title{
     justify-content: center;

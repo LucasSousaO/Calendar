@@ -10,18 +10,27 @@ let testeDate = "DD/MM/YYYY";
 const $weekDays = $(".week-days");
 let day = "";
 
-        $("#title").text(yearsMonth[dateMonth-1]);
-        for(i=0; i < weekDay.length; i++){
-            day = ("<ul class="+weekDay[i]+">"+ weekDay[i] + "</ul><br>");
-            $weekDays.append(day);//.find("ul").attr("class", weekDay[i]);
-        }
+let doSomething = (diasVazios) =>{
+    let i =0;
+    for(diasVazios= testeDate.getDay();diasVazios>0;diasVazios--){
+        $("."+weekDay[i]).append("<br><br>&nbsp"); 
+        i++;
+    };
+}
 
-        for(let i =1;i<=lastDay;i++){
-            testeDate = new Date(dateYear + "," + dateMonth + "," + i) ; //Date(1962, 6, 7);
-                console.log(yearsMonth[dateMonth-1] + " "+ i + "th - /" + weekDay[testeDate.getDay()] );
+        $("#title").text(yearsMonth[dateMonth-1]);                                  //Just title
 
-                $("."+ weekDay[testeDate.getDay()]).append("<br><ul>"+i+"</ul>");
-            
+        for(i=0; i < weekDay.length; i++){                                          
+            day = ("<ul class="+weekDay[i]+">"+ weekDay[i] + "</ul><br>");          
+            $weekDays.append(day);
+        };
 
-        }
+        for(let dia =1;dia<=lastDay;dia++){                                         //for to fill the table
+            testeDate = new Date(dateYear + "," + dateMonth + "," + dia) ;          //Date(1962, 6, 7);
+
+                weekDay[testeDate.getDay()] != "Sunday" && dia == 1 ? doSomething(testeDate.getDay()): "";
+                //console.log(yearsMonth[dateMonth-1] + " "+ dia + "th - /" + weekDay[testeDate.getDay()] );
+
+                $("."+ weekDay[testeDate.getDay()]).append("<br><ul>"+dia+"</ul>");
+        };
 
