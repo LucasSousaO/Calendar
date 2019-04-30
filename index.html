@@ -10,15 +10,41 @@
 
   <body>
     <div id="calendar">
-      <div class="table">
-          <ul class= "table" v-for="month in months">{{month.mes}}</ul>
-          
-      </div>
-      <p id="title">{{ month }}</p>
-      
-      <div class="week-days">
-          <div  v-for="day in weekDay">{{weekDay.dia}}</div>
-      </div>
+        <table>
+            <thead>
+                <div class="table">
+                    <ul class= "table" v-for="month in months" @click="monthUpdate(month.id)">{{month.mes}}</ul>
+                </div>
+                <p>{{date}} </p>
+                <p @click="firstUpdate" id="title">{{ month }}</p>
+            </thead>
+            <tbody>
+                    
+            <div class="table-month">
+                <ul v-for="weekDia in weeks" class={weekDia.dia} >{{weekDia.dia}}</ul>
+            </div>
+              <tr >
+                <td >
+                 
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     </div>
   </body>
