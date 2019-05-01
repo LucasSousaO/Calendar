@@ -1,107 +1,105 @@
 let dateToday = new Date();
 
-let dateMonth = dateToday.getMonth()+1;
-
-let dateDay = dateToday.getDay(); // Sunday - Saturday : 0 - 6
-let dateDayNumber = dateToday.getDate();
-let dateYear = dateToday.getFullYear();
-let lastDay = new Date(2019, dateMonth, 0).getDate();
-
 const yearsMonth = ["January", "February", "March","April", "May", "June", "July", "August", "September", "October", "November", "December"];
 const weekDay = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-let monthName = yearsMonth[dateMonth-1];
-let testeDate = "DD/MM/YYYY";
-const $weekDays = $(".week-days");
-let day = "";
+
 
 new Vue({
     el: "#calendar",
-    data:{
-        date: dateDayNumber+"/"+dateMonth+"/"+dateYear, //DD/MM/YYYY
-        day: dateDayNumber,                             //DD
-        month: monthName,                               //MMMM
-        year: dateYear,                                 //YYYY
-        weekDay: dateDay,                               //Sunday - Saturday : 0 - 6
-        months: [{mes: "January", id: "1"},{mes: "February", id: "2"},{mes: "March", id: "3"},{mes:"April", id: "4"},{mes: "May", id: "5"},{mes: "June", id: "6"},{mes: "July", id: "7"},{mes: "August", id: "8"},{mes: "September", id: "9"},{mes: "October", id: "10"},{mes: "November", id: "11"},{mes: "December", id: "12"}],
-        weekDia: weekDay[dateDayNumber],
-        weeks: [{dia: "Sunday"},{dia: "Monday"},{dia: "Tuesday"},{dia: "Wednesday"},{dia: "Thursday"},{dia: "Friday"},{dia: "Saturday"}],
-    },
-    computed:{
-        
-    },
-    methods:{
-        firstUpdate: () => {
-            let doSomething = (diasVazios) =>{
-                let i =0;
-                alert("the first day of the month would be "+dateDayNumber);
-                for(diasVazios= testeDate.getDay();diasVazios>0;diasVazios--){
-                    $("."+weekDay[i]).append("<br><br>&nbsp"); 
-                    i++;
-                };
-                
-            };
-
-            for(let dia =1;dia<=lastDay;dia++){                                         //for to fill the table
-                testeDate = new Date(dateYear + "," + dateMonth + "," + dia) ;          //Date(1962, 6, 7);
-    
-                    weekDay[testeDate.getDay()] != "Sunday" && dia == 1 ? doSomething(testeDate.getDay()): "";
-                    console.log(yearsMonth[dateMonth-1] + " "+ dia + "th - /" + weekDay[testeDate.getDay()] );
-    
-                  
-            };
-        
+        data:{
+            date: dateToday.getDate()+"/"+dateToday.getMonth()+"/"+dateToday.getFullYear(), //DD/MM/YYYY
+            day: dateToday.getDate(),                                                         //DD
+            month: yearsMonth[dateToday.getMonth()+1-1],                                      //MMMM
+            year: dateToday.getFullYear(),                                                    //YYYY
+           
+            lastDay: new Date(2019, dateToday.getMonth()+1, 0).getDate(),
             
-        },
-        monthUpdate: (month) =>{
-            alert("the next update will be for "+month);
-            //UPDATE FOR THE NEXT MONTH
-            let dateToday= new Date("," + month + ","+ 01  +",2019"); //dateToday1 = new Date("03,03,2019");
-            console.log(dateToday);
+            months: [{mes: "January", id: "0"},{mes: "February", id: "1"},{mes: "March", id: "2"},{mes:"April", id: "3"},{mes: "May", id: "4"},{mes: "June", id: "5"},{mes: "July", id: "6"},{mes: "August", id: "7"},{mes: "September", id: "8"},{mes: "October", id: "9"},{mes: "November", id: "10"},{mes: "December", id: "11"}],
+            weekDia: weekDay[dateToday.getDate()],
+            headers: [{dia: "Sunday"},{dia: "Monday"},{dia: "Tuesday"},{dia: "Wednesday"},{dia: "Thursday"},{dia: "Friday"},{dia: "Saturday"}],
         },
 
-        
-    },
-})
+        methods:{
+            firstUpdate: function() {
+               let actualDay = dateToday.getDate();
+               let actualMonth = dateToday.getMonth();
+                for(dd=0;dd<7;dd++){ //create table title
+                    $(".table-month").append("<ul id="+weekDay[dd]+">"+weekDay[dd]+"</ul>");
+                }
+                //create table title
+                let lastDay = new Date(2019, new Date(this.month + ","+ 01  +",2019").getMonth()+1, 0).getDate();
+                let firstDay = weekDay[new Date(this.month + ","+ 01  +",2019").getDay()]; 
+                
+                let ajustFirstDay =0;
+                firstDay != "Monday"?  ajustFirstDay = 0 : ajustFirstDay =new Date(this.month + ","+ 01  +",2019").getDay();
+                    //empty slot
+                    while(ajustFirstDay<new Date(this.month + ","+ 01  +",2019").getDay()){
+                                let insertDay = "<ul>&nbsp</ul>";
+                                $("#"+ weekDay[ajustFirstDay]).append(insertDay);
+                        ajustFirstDay++;
+                    }  
+                        //create the real table
+                        for(let dd = 1; dd <= lastDay; dd++){
+                            let insertDay ='';
+                            newDate = new Date(this.month + ","+ dd  +",2019");
+                            (dd == actualDay)&&(actualMonth==newDate.getMonth())? insertDay = "<ul class= today " + weekDay[newDate.getDay()] +" id="+dd+">"+dd+"</ul>": insertDay = "<ul class= " + weekDay[newDate.getDay()] +" id="+dd+">"+dd+"</ul>";
+                                //let insertDay = "<ul class= " + weekDay[newDate.getDay()] +">"+dd+"</ul>";
+                                $("#"+ weekDay[newDate.getDay()]).append(insertDay)
+                        }
 
+               
+            },
+                monthUpdate: function(newMonth){
+                    
+                    this.month = yearsMonth[newMonth];
+                    //UPDATE FOR THE NEXT MONTH
+                    let newDate= new Date(this.month + ","+ 01  +",2019"); //dateToday1 = new Date("03,03,2019");
+                    let lastDay = new Date(2019, newDate.getMonth()+1, 0).getDate();
+                    let firstDay = weekDay[newDate.getDay()];
 
+                    for(let dd = 1; dd <= lastDay; dd++){
+                        $("#"+dd).remove();
+                        }
+                    for(dd=0;dd<7;dd++){ //create table title
+                         $("#"+weekDay[dd]).remove();
+                         }
 
+                    let actualDay = dateToday.getDate();
+                    let actualMonth = dateToday.getMonth();
+                     for(dd=0;dd<7;dd++){ //create table title
+                         $(".table-month").append("<ul id="+weekDay[dd]+">"+weekDay[dd]+"</ul>");
+                     }
+                     //create table title
+                     
+                     let ajustFirstDay =0;
+                     firstDay != "Sunday"?  ajustFirstDay = 0 : ajustFirstDay = newDate.getDay();
+                         //empty slot
+                         while(ajustFirstDay<newDate.getDay()){
+                                     let insertDay = "<ul>&nbsp</ul>";
+                                     $("#"+ weekDay[ajustFirstDay]).append(insertDay);
+                             ajustFirstDay++;
+                         }  
+                             //create the real table
+                             for(let dd = 1; dd <= lastDay; dd++){
+                                 let insertDay ='';
+                                 newDate = new Date(this.month + ","+ dd  +",2019");
+                                 (dd == actualDay)&&(actualMonth==newDate.getMonth())? insertDay = "<ul class= today " + weekDay[newDate.getDay()] +" id="+dd+">"+dd+"</ul>": insertDay = "<ul class= " + weekDay[newDate.getDay()] +" id="+dd+">"+dd+"</ul>";
+                                     //let insertDay = "<ul class= " + weekDay[newDate.getDay()] +">"+dd+"</ul>";
+                                     $("#"+ weekDay[newDate.getDay()]).append(insertDay)
+                             }
+
+                    
+                },
+
+                reversa: function(){
+                    this.month = this.month.split('').reverse().join('');
+                    $("#botao").text("Reverse");
+                },
+        },
+});
 
 /*
-
-let dateToday = new Date();
-let dateMonth = dateToday.getMonth()+1;
-let dateDay = dateToday.getDay(); // Sunday - Saturday : 0 - 6
-let dateDayNumber = dateToday.getDate();
-let dateYear = dateToday.getFullYear();
-let lastDay = new Date(2019, dateMonth, 0).getDate();
-const yearsMonth = ["January", "February", "March","April", "May", "June", "July", "August", "September", "October", "November", "December"];
-const weekDay = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-let testeDate = "DD/MM/YYYY";
-const $weekDays = $(".week-days");
-let day = "";
-
-let doSomething = (diasVazios) =>{
-    let i =0;
-    for(diasVazios= testeDate.getDay();diasVazios>0;diasVazios--){
-        $("."+weekDay[i]).append("<br><br>&nbsp"); 
-        i++;
-    };
-}
-
-        $("#title").text(yearsMonth[dateMonth-1]);                                  //Just title
-
-        for(i=0; i < weekDay.length; i++){                                          
-            day = ("<ul class="+weekDay[i]+">"+ weekDay[i] + "</ul><br>");          
-            $weekDays.append(day);
-        };
-
-        for(let dia =1;dia<=lastDay;dia++){                                         //for to fill the table
-            testeDate = new Date(dateYear + "," + dateMonth + "," + dia) ;          //Date(1962, 6, 7);
-
-                weekDay[testeDate.getDay()] != "Sunday" && dia == 1 ? doSomething(testeDate.getDay()): "";
-                //console.log(yearsMonth[dateMonth-1] + " "+ dia + "th - /" + weekDay[testeDate.getDay()] );
-
-                $("."+ weekDay[testeDate.getDay()]).append("<br><ul>"+dia+"</ul>");
-        };
-
-*/
+Vue.component('blog-post', {
+    props: ['tableDay'],
+    template: '<ul>{{ tableDay }}</ul>'
+  });*/

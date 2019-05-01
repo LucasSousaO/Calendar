@@ -5,47 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" type="text/css" href="css\calendar.css">
     <title>Holidays</title>
-    <script src="https://npmcdn.com/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
   </head>
 
   <body>
     <div id="calendar">
-        <table>
-            <thead>
-                <div class="table">
-                    <ul class= "table" v-for="month in months" @click="monthUpdate(month.id)">{{month.mes}}</ul>
-                </div>
-                <p>{{date}} </p>
-                <p @click="firstUpdate" id="title">{{ month }}</p>
+      <table>
+          <thead>
+              <div class="table">
+                <ul class= "table" v-for="month in months" @click="monthUpdate(month.id)">{{month.mes}}</ul>
+               </div>
+                <button id="botao" v-on:click="reversa">{{date}} </button>
+                <p id="title" v-on:click.once="firstUpdate(month)">{{ month }}</p>
             </thead>
-            <tbody>
+            <tbody>       
+              <div class="table-month">
                     
-            <div class="table-month">
-                <ul v-for="weekDia in weeks" class={weekDia.dia} >{{weekDia.dia}}</ul>
-            </div>
-              <tr >
-                <td >
-                 
-                </td>
-              </tr>
+              </div>
             </tbody>
-          </table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        </table>
     </div>
   </body>
 
