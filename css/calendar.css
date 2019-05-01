@@ -42,7 +42,7 @@ button{
     font-size: 2em;
 }
 .escolhido{
-    display: flex;
+    display: initial;
     color:red;
 }
 
