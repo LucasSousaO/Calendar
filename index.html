@@ -11,20 +11,26 @@
 
   <body>
     <div id="calendar">
-      <table>
-          <thead>
-              <div class="table">
-                <ul class= "table" v-for="month in months" @click="monthUpdate(month.id)">{{month.mes}}</ul>
-               </div>
-                <button id="botao" v-on:click="reversa">{{date}} </button>
-                <p id="title" v-on:click="firstUpdate(month)">{{ month }}</p>
-            </thead>
-            <tbody>       
-              <div class="table-month">
-                    
-              </div>
-            </tbody>
-        </table>
+      <div class="esquerda">
+        <p>{{DDDD}}</p>
+        <p id="title">{{ actualMonth }} {{day}}TH</p>
+      </div>
+      <div class="direita">
+        <p class="year">{{year}}</p>
+        <table>
+            <thead>
+                <div class="table">
+                  <ul class= "table" v-for="month in months" @click="monthUpdate(month.id)">{{month.mes}}</ul>
+                </div>
+              </thead>
+              <tbody>       
+                <div class="table-month">
+                      
+                </div>
+              </tbody>
+          </table>
+          <div class ="time"><p>{{HH}}</p><p>:</p><p>{{MM}}</p></div>
+        </div>
     </div>
   </body>
 

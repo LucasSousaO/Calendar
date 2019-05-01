@@ -10,9 +10,11 @@ new Vue({
             day: dateToday.getDate(),                                                         //DD
             month: yearsMonth[dateToday.getMonth()],                                      //MMMM
             year: dateToday.getFullYear(),                                                    //YYYY
-           
+            actualMonth: yearsMonth[new Date().getMonth()].toUpperCase(),
             lastDay: new Date(2019, dateToday.getMonth()+1, 0).getDate(),
-            
+            HH:new Date().getHours(),
+            MM:new Date().getMinutes(),
+            DDDD: weekDay[dateToday.getDate()].toUpperCase(),
             months: [{mes: "January", id: "0"},{mes: "February", id: "1"},{mes: "March", id: "2"},{mes:"April", id: "3"},{mes: "May", id: "4"},{mes: "June", id: "5"},{mes: "July", id: "6"},{mes: "August", id: "7"},{mes: "September", id: "8"},{mes: "October", id: "9"},{mes: "November", id: "10"},{mes: "December", id: "11"}],
             weekDia: weekDay[dateToday.getDate()],
             headers: [{dia: "Sunday"},{dia: "Monday"},{dia: "Tuesday"},{dia: "Wednesday"},{dia: "Thursday"},{dia: "Friday"},{dia: "Saturday"}],
@@ -51,7 +53,7 @@ new Vue({
                
             },
                 monthUpdate: function(newMonth){
-                    
+                    $(".table").attr("class","escolhido");
                     this.month = yearsMonth[newMonth];
                     //UPDATE FOR THE NEXT MONTH
                     let newDate= new Date(this.month + ","+ 01  +",2019"); //dateToday1 = new Date("03,03,2019");
