@@ -17,7 +17,7 @@
                 <ul class= "table" v-for="month in months" @click="monthUpdate(month.id)">{{month.mes}}</ul>
                </div>
                 <button id="botao" v-on:click="reversa">{{date}} </button>
-                <p id="title" v-on:click.once="firstUpdate(month)">{{ month }}</p>
+                <p id="title" v-on:click="firstUpdate(month)">{{ month }}</p>
             </thead>
             <tbody>       
               <div class="table-month">
