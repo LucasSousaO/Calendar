@@ -20,7 +20,7 @@
         <p class="year">{{year}}</p>
         <table>
             <thead>
-                <div class="table">
+                <div class="general-table">
                   <ul class= "table" v-for="month in months" @click="monthUpdate(month.id)">{{month.mes}}</ul>
                 </div>
               </thead>
@@ -30,7 +30,7 @@
                 </div>
               </tbody>
           </table>
-          <div class ="time"><p>{{HH}}</p><p>:</p><p>{{MM}}</p></div>
+          <div class ="time"><p>{{HH}}</p><p>:</p><p>{{MM}}</p><p>:</p><p>{{SS}}</p></div>
         </div>
     </div>
   </body>
