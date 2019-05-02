@@ -82,3 +82,7 @@ button{
     scale: 90%;
     border-radius:20px;
 }
+.general-table{
+    display: table-cell;
+    margin-left: -2em;
+}

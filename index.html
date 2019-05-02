@@ -11,29 +11,34 @@
 
   <body>
     <div id="calendar">
+      
       <div class="esquerda">
-        <p>Today</p>
-        <p>{{DDDD}}</p>
-        <p id="title">{{ actualMonth }} {{day}}TH</p>
-      </div>
+          <p>Today</p>
+          <p>{{DDDD}}</p>
+          <p id="title">{{ actualMonth }} {{day}}TH</p>
+        </div>
+
       <div class="direita">
         <p class="year">{{year}}</p>
+        
         <table>
             <thead>
-                <div class="general-table">
+              <div class="general-table">
                   <ul class= "table" v-for="month in months" @click="monthUpdate(month.id)">{{month.mes}}</ul>
                 </div>
               </thead>
-              <tbody>       
-                <div class="table-month">
+              
+            <tbody>    
+              <div class="table-month">
                       
                 </div>
               </tbody>
           </table>
+        
           <div class ="time"><p>{{HH}}</p><p>:</p><p>{{MM}}</p><p>:</p><p>{{SS}}</p></div>
         </div>
-    </div>
-  </body>
+      </div>
+    </body>
 
 </html>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
