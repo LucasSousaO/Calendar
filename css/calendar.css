@@ -1,65 +1,31 @@
 body{
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
-.table{
-    display: initial;
-    justify-content: space-around;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    width: 100%;
-    font-size: x-small;
-}
-button{  
-    border-radius: 10%;
-    background-color: blueviolet;
-    justify-content: center;
-    display: flex;
-}
-.year{
-    justify-content: end;
-    display: grid;
-    margin-right: 2em;
-    font-size: 2em;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-}
 .today{
     color: white;
     border-radius: 10px;
     background-color: gray;
 }
-.table-month{
-    display: flex;
-    justify-content: space-around;
-    border:solid 1px black;
-    border-radius: 10px;
-}
-.days{
-    display: flex;
-    justify-content: space-around;
-}
-.month{
-    border: solid 1px black;
-}
-
-.week{
-    border: solid 1px black;
-    height: 10em;
-    font-size: 2em;
-}
 .escolhido{
     display: initial;
     color:red;
 }
-
+.table{
+    display: initial;
+    justify-content: space-around;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    width: 100%;
+    font-size: .75em;
+    cursor: pointer;
+}
 .week-days{
-
     margin-left: -3em;
+    width:auto;
 }
 .time{
     display: flex;
     margin-left: 2em;
 }
-
-
 .esquerda{
     background-color: blueviolet;
     width:30%;
@@ -85,4 +51,17 @@ button{
 .general-table{
     display: table-cell;
     margin-left: -2em;
+}
+.table-month{
+    display: flex;
+    justify-content: space-around;
+    border:solid 1px black;
+    border-radius: 10px;
+}
+.year{
+    justify-content: end;
+    display: grid;
+    margin-right: 2em;
+    font-size: 2em;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
