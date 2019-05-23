@@ -17,7 +17,8 @@ new Vue({
             SS:new Date().getSeconds(),                                                         //SS
             DDDD: weekDay[dateToday.getDay()].toUpperCase(),                                   //WEEK DAY UPPERCASE
             months: [{mes: "January", id: "0"},{mes: "February", id: "1"},{mes: "March", id: "2"},{mes:"April", id: "3"},{mes: "May", id: "4"},{mes: "June", id: "5"},{mes: "July", id: "6"},{mes: "August", id: "7"},{mes: "September", id: "8"},{mes: "October", id: "9"},{mes: "November", id: "10"},{mes: "December", id: "11"}],
-            weekDia: weekDay[dateToday.getDate()],                                              //WEEK DAY
+            weekDia: weekDay[dateToday.getDate()],
+            show: false,                                              //WEEK DAY
         },
         watch:{
             //ATUALIZA HORA - NÃO ESTÁ FUNCIONANDO
@@ -35,7 +36,8 @@ new Vue({
         },
 
         methods:{
-                monthUpdate: function(newMonth){
+                
+            monthUpdate: function(newMonth){
                     //this.month.addClass("escolhido");
                         //GET THE MONTH
                         this.month = yearsMonth[newMonth];
@@ -77,6 +79,25 @@ new Vue({
                         $(".table-month").append("<ul id="+weekDay[dd]+" class='week-days'>"+weekDay[dd]+"</ul>");
                     }
                 },
+
+                beforeEnter: function (el) {
+                    el.style.opacity = 0
+                  },
+                  enter: function (el, done) {
+                    Velocity(el, { opacity: 1, fontSize: '1.4em' }, { duration: 300 })
+                    Velocity(el, { fontSize: '1em' }, { complete: done })
+                  },
+                  leave: function (el, done) {
+                    Velocity(el, { translateX: '15px', rotateZ: '50deg' }, { duration: 600 })
+                    Velocity(el, { rotateZ: '100deg' }, { loop: 2 })
+                    Velocity(el, {
+                      rotateZ: '45deg',
+                      translateY: '30px',
+                      translateX: '30px',
+                      opacity: 0
+                    }, { complete: done })
+                  }
+
         },
         mounted: () => {
                         let actualDay = dateToday.getDate();
