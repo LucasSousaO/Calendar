@@ -43,43 +43,48 @@ new Vue({
                 //GET THE MONTH
                 setTimeout(()=>{
                     this.show = true;
+                    console.log("voltou");
+
+                    this.month = yearsMonth[newMonth];
+                    //UPDATE FOR THE NEXT MONTH
+                    let newDate= new Date(this.month + ","+ 01  +",2019"); //dateToday1 = new Date("03,03,2019");
+                    let lastDay = new Date(2019, newDate.getMonth()+1, 0).getDate();
+                    let firstDay = weekDay[newDate.getDay()];
+                    //CLEANING THE FULL TABLE
+                    for(let dd = 1; dd <= lastDay; dd++){
+                        $("#"+dd).remove();
+                    }
+                    for(dd=0;dd<7;dd++){ 
+                        $("#"+weekDay[dd]).remove();
+                    }
+                    //SET ACTUAL DAY AND CREATE WEEK
+                    let actualDay = dateToday.getDate();
+                    let actualMonth = dateToday.getMonth();
+                    console.log(newMonth);
+                    this.createWeek();
+
+                    //CREATE EMPTY SLOT
+                    let ajustFirstDay =0;
+                    firstDay != "Sunday"?  ajustFirstDay = 0 : ajustFirstDay = newDate.getDay();
+
+                    while(ajustFirstDay<newDate.getDay()){
+                        let insertDay = "<ul>&nbsp</ul>";
+                        $("#"+ weekDay[ajustFirstDay]).append(insertDay);
+                        ajustFirstDay++;
+                    }  
+                    //INSERT NUMBERS IN THE TABLE
+                    for(let dd = 1; dd <= lastDay; dd++){
+                        let insertDay ='';
+                        newDate = new Date(this.month + ","+ dd  +",2019");
+                        (dd == actualDay)&&(actualMonth==newDate.getMonth())? insertDay = "<ul class= today " + weekDay[newDate.getDay()] +" id="+dd+">"+dd+"</ul>": insertDay = "<ul class= " + weekDay[newDate.getDay()] +" id="+dd+">"+dd+"</ul>";
+                            $("#"+ weekDay[newDate.getDay()]).append(insertDay)
+                    }
+                //this.show = true;  
                 }, 800);
-                this.month = yearsMonth[newMonth];
-                //UPDATE FOR THE NEXT MONTH
-                let newDate= new Date(this.month + ","+ 01  +",2019"); //dateToday1 = new Date("03,03,2019");
-                let lastDay = new Date(2019, newDate.getMonth()+1, 0).getDate();
-                let firstDay = weekDay[newDate.getDay()];
-                //CLEANING THE FULL TABLE
-                for(let dd = 1; dd <= lastDay; dd++){
-                    $("#"+dd).remove();
-                }
-                for(dd=0;dd<7;dd++){ 
-                    $("#"+weekDay[dd]).remove();
-                }
-                //SET ACTUAL DAY AND CREATE WEEK
-                let actualDay = dateToday.getDate();
-                let actualMonth = dateToday.getMonth();
-                this.createWeek();
-
-                //CREATE EMPTY SLOT
-                let ajustFirstDay =0;
-                firstDay != "Sunday"?  ajustFirstDay = 0 : ajustFirstDay = newDate.getDay();
-
-                while(ajustFirstDay<newDate.getDay()){
-                    let insertDay = "<ul>&nbsp</ul>";
-                    $("#"+ weekDay[ajustFirstDay]).append(insertDay);
-                    ajustFirstDay++;
-                }  
-                //INSERT NUMBERS IN THE TABLE
-                for(let dd = 1; dd <= lastDay; dd++){
-                    let insertDay ='';
-                    newDate = new Date(this.month + ","+ dd  +",2019");
-                    (dd == actualDay)&&(actualMonth==newDate.getMonth())? insertDay = "<ul class= today " + weekDay[newDate.getDay()] +" id="+dd+">"+dd+"</ul>": insertDay = "<ul class= " + weekDay[newDate.getDay()] +" id="+dd+">"+dd+"</ul>";
-                        $("#"+ weekDay[newDate.getDay()]).append(insertDay)
-                }
-              //this.show = true;  
+                
             },
             createWeek: function(){
+                console.log("criei semana");
                 for(let dd=0;dd<7;dd++){ //create table title
                     $(".table-month").append("<ul id="+weekDay[dd]+" class='week-days'>"+weekDay[dd]+"</ul>");
                 }
