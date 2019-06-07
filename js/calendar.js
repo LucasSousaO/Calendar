@@ -20,20 +20,22 @@ new Vue({
             weekDia: weekDay[dateToday.getDate()],
             show: true,                                              //WEEK DAY
         },
-        watch:{
+        computed:{
             //ATUALIZA HORA - NÃO ESTÁ FUNCIONANDO
            /* HH(){
                return this.HH != new Date().getHours()?new Date().getHours(): this.HH;
             },
             MM(){
                 return this.HH != new Date().getHours()?new Date().getHours(): this.HH;
-            },*/ 
-            
-            question: function(SS) { console.log("mudou");
-              this.SS = "teste";
             },
-
+            SS: function (){
+                console.log('new: %s, old: %s', SS, new Date().getSeconds())
+                return 
+            },*/
+  
         },
+
+        
 
         methods:{
                 

@@ -39,11 +39,11 @@
 
         </transition>
         <div>
-          <button @click="monthUpdate(6)">
+          <button @click="SS=SS+1">
             Toggle
           </button>
 
-          <div class ="time"><p>{{HH}}</p><p>:</p><p>{{MM}}</p><p>:</p><p>{{SS}}</p></div>
+          <div class ="time"><p>{{HH}}</p><p>:</p><p>{{MM}}</p><p>:</p><p>{{ new Date().getSeconds()  }}</p></div>
 
         </div>
       </div>
