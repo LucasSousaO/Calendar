@@ -1,26 +1,31 @@
 body{
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background-color: blueviolet;
 }
 .today{
     color: white;
     border-radius: 10px;
-    background-color: gray;
+    background-color: purple;
+  
 }
 .escolhido{
     display: initial;
     color:red;
+    justify-content: center;
+    
 }
 .table{
-    display: initial;
-    justify-content: space-around;
+    display: table-cell;
+    padding-left: 0px;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     width: 100%;
-    font-size: .75em;
+    font-size: auto;
     cursor: pointer;
+    text-align: center;
 }
 .week-days{
-    margin-left: -3em;
     width:auto;
+    padding-left: 0px;
 }
 .time{
     display: flex;
@@ -32,31 +37,33 @@ body{
     height: 100%;
     position: fixed;
     left: 0;
-    scale: 90%; 
+    scale: auto; 
     color: white;
-    font-size: 2em;
+    font-size: larger;
     justify-content: center;
     display: grid;
     align-content: center;
+    justify-items: center;
 }
 .direita{
-    background-color: white;
-    width:70%;
-    height: 100%;
     position: fixed;
+    width: 70%;
+    height: 100%;
     right: 0;
-    scale: 90%;
-    border-radius:20px;
+    scale: auto;
+    border-radius:auto;
 }
 .general-table{
-    display: table-cell;
-    margin-left: -2em;
+    display: flex;
+    justify-content: center;
+    font-size: auto;
 }
 .table-month{
     display: flex;
     justify-content: space-around;
-    border:solid 1px black;
+    border:solid 5px darkviolet;
     border-radius: 10px;
+    font-size: larger;
 }
 .year{
     justify-content: end;
@@ -64,4 +71,11 @@ body{
     margin-right: 2em;
     font-size: 2em;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.Sunday, .Monday, .Tuesday, .Wednesday, .Thursday, .Friday, .Saturday, .today{
+    padding-left: 0px;
+    text-align: center;
+    padding-bottom: auto;
+    font-size: larger;
 }
