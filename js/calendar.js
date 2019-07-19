@@ -52,16 +52,19 @@ new Vue({
             sensation: sensacao,
             city: locale,
         },
-        watch:{
+        computed: {
             //ATUALIZA HORA - NÃO ESTÁ FUNCIONANDO automaticamente
-            hourUpdate: function(){
+            /*hourUpdate: function(){
                 this.HH = new Date().getHours();    
             },
             minutesUpdate: function(){                                                //HH
                 this.MM = new Date().getMinutes();  
-            },
-            secondsUpdate: function (){                                             //MM
-                this.SS = new Date().getSeconds(); 
+            },*/
+            secondsUpdate: function(){   
+                console.log(new Date().getSeconds()); 
+                secondsUpdate ="mudou";
+                console.log(secondsUpdate);                                       //MM
+                return new Date().getSeconds(); 
             },
   
         },
@@ -140,9 +143,11 @@ new Vue({
 */
             updateTime: function(){
                 console.log("The time was updated!");
-                this.HH = new Date().getHours();                                                         //HH
-                this.MM = new Date().getMinutes();                                                         //MM
                 this.SS = new Date().getSeconds();
+                this.MM = new Date().getMinutes();
+                this.HH = new Date().getHours();                                                         //HH
+
+                
             },
             
         },
