@@ -26,27 +26,29 @@
         <p class="year">{{year}}</p>
         
 
-
-        <div class="general-table">
-          <ul class= "table" v-for="month in months" @click="monthUpdate(month.id)">{{month.mes}}</ul>
-        </div>
+        <div class="table-block">
+          <div class="general-table">
+            <ul class= "table" v-for="month in months" @click="monthUpdate(month.id)">{{month.mes}}</ul>
+          </div>
 
 <!--          <transition
-          v-on:before-enter="beforeEnter"
-          v-on:enter="enter"
-          v-on:leave="leave"
-          v-bind:css="false"
-          >
+            v-on:before-enter="beforeEnter"
+            v-on:enter="enter"
+            v-on:leave="leave"
+            v-bind:css="false"
+            >
 -->
-            <div class="table-month" v-show="show" v-if="!se">
-            </div>
-            <div class="table-month" v-show="!show" v-if="se">
-            </div>
-            
- <!--         </transition>
- -->
-          <div class ="time"><p>{{HH}}</p><p>:</p><p>{{MM}}</p><p>:</p><p>{{ new Date().getSeconds()  }}</p></div>
+          <div class="table-month" v-show="show" v-if="!se">
+          </div>
+          <div class="table-month" v-show="!show" v-if="se">
+          </div>
+              
+<!--         </transition>
+-->
+          <div class="time"><p>{{HH}}</p><p>:</p><p>{{MM}}</p><p>:</p><p>{{ SS }}</p>
+          </div>
           <button @click="updateTime">Update the time</button>
+        </div>
         </div>
       </div>
     </div>

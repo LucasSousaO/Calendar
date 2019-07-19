@@ -42,8 +42,9 @@ body{
     font-size: larger;
     justify-content: center;
     display: grid;
-    align-content: center;
+    align-content: start;
     justify-items: center;
+    margin-top: 5%;
 }
 .direita{
     position: fixed;
@@ -78,4 +79,9 @@ body{
     text-align: center;
     padding-bottom: auto;
     font-size: larger;
+}
+
+.table-block{
+    align-content: center;
+    vertical-align: middle;
 }
